@@ -1,0 +1,27 @@
+vse = open("E:\documents\My Clippings.txt", encoding="utf8")
+vsee=vse.read()
+
+naslov = input()
+
+import re
+x = [m.start() for m in re.finditer('\ufeff', vsee)]
+x.append(len(vsee))
+f = [m.start() for m in re.finditer('2020', vsee)]
+f.append(len(vsee))
+
+cnt = ''
+n = 1
+for z in x:
+    if naslov in vsee[z:(z+40)]: 
+        cnt = cnt + vsee[(f[n]+13):(x[n+1]-11)]
+        n= n+1
+    else:
+        n = n+1
+        
+print(cnt)
+
+knjiga = "Desktop\ " + naslov + ".txt"
+file = open(knjiga, "w") 
+            
+file.write(cnt) 
+file.close() 
